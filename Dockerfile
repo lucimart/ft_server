@@ -6,7 +6,7 @@
 #    By: lucimart <lucimart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/24 10:47:13 by lucimart          #+#    #+#              #
-#    Updated: 2020/09/24 22:35:05 by lucimart         ###   ########.fr        #
+#    Updated: 2020/09/25 20:01:59 by lucimart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,10 @@ RUN cd /tmp/ && wget -q https://wordpress.org/latest.tar.gz
 
 ##### COPY CONF FILES && init.sh TO CONTAINER INI
 COPY ./srcs/init.sh /
+COPY ./srcs/autoindex_* /
 COPY ./srcs/conf-* /tmp/
 ##### COPY CONF FILES && init.sh TO CONTAINER END
-
+EXPOSE 80 443
 ##### Start the configuration of the container once ran.
 # The last bash is to trick docker into not killing the container lmao
 CMD bash init.sh && bash
